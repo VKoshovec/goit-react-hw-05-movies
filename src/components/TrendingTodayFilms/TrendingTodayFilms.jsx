@@ -19,7 +19,7 @@ const TrendingTodayFilms = () => {
      console.log(films);
 
     return (       
-        <div >{ films.map((element)=>{ return <Link to = {`${element.id}`} className={ scss.filmLink }>{element.title}</Link> }) }</div>
+        <div>{ films.map((element)=>{ return <Link to = {`${element.id}`} className={ scss.filmLink }>{element.title}</Link> }) }</div>
     );
 };
 
