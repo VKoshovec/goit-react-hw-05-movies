@@ -1,8 +1,7 @@
 import scss from './movieDetails.module.scss';
 import { getMovieInfo, getImageUrl, getGenresList } from 'components/moviesApi';
-import { useParams } from 'react-router-dom';
+import { Outlet, useParams, Link } from 'react-router-dom';
 import { useState, useEffect } from 'react';
-
 
 const MovieDetails=()=>{
 
@@ -27,7 +26,7 @@ const MovieDetails=()=>{
                 <img src={ getImageUrl( movie.poster_path, 200 ) } alt={ movie.title } className={ scss.poster }/>
                 <div className={ scss.leftInfo}>
                     <span className={ scss.title }>{ movie.title }</span>
-                    {/* <span>{ score }</span> */}
+                    <span className={ scss.overview }>{`User score: ${movie.vote_average}`}</span>
                     <span className={ scss.category }>Overview</span>
                     <p className={ scss.overview }>{ movie.overview }</p>
                     <span className={ scss.category }>Genres</span>
@@ -38,12 +37,13 @@ const MovieDetails=()=>{
                     </p>
                 </div> 
             </div>
-                <span>Additional information</span>
-                <ul>
-
+                <p className={ scss.aditional }>Additional information</p>
+                <ul >
+                   <li><Link to={`/movies/${movieId}/cast`}>Cast</Link></li>
+                   <li><Link to={`/movies/${movieId}/reviews`} >Reviews</Link></li>
                 </ul>
-            <div>
-
+            <div className={ scss.linkInfo }>
+                <Outlet/>
             </div>
         </div>
     )

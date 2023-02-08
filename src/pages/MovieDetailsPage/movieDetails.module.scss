@@ -1,19 +1,26 @@
 .movieCard{
     display: block;
-    width: 100%;
+
+    padding: 0px;
+    margin: 0px;
     padding: 20px;
+    box-shadow:  2px 2px 1px gray;
 }
 
 .mainInfo {
     display: flex;
-    min-width: 50vw;
+    min-width: 45vw;
     flex-direction: row;
+    padding: 10px;
+    outline: 1px solid black;
 }
 
 .leftInfo {
     display: flex;
     flex-direction: column;
-    width: 50vw;
+    justify-content: space-between;
+    width: 45vw;
+    
 }
 
 .poster{
@@ -33,13 +40,13 @@
     font-size: 18px;
     font-weight: 700;
     padding-left: 20px;
-    margin-top: 10px;
+   
 }
 
 .overview{
     font-size: 14px;
     padding-left: 20px;
-    margin-top: 10px;
+    
 }
 
 .genresList {
@@ -48,4 +55,14 @@
     padding: 0;
     gap: 10px;
     list-style: none;
+}
+
+.linkInfo {
+    outline: 1px solid black;
+}
+
+.aditional{
+    font-size: 18px;
+    font-weight: 700;
+    padding-left: 20px;
 }
