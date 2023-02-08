@@ -8,14 +8,19 @@ const MovieDetails=()=>{
 
     const movieId = useParams().id;
     const [ movie, setMovie ] = useState([]);
+    const [ genres, setGenres ] = useState([]);
+    
 
     useEffect (()=>{
-        getMovieInfo(movieId).then(res => setMovie(res));
+        getMovieInfo(movieId).then(res => { 
+            setMovie(res);
+            const genresIdList =  res.genres.map((elem)=>{ return elem.id });
+            getGenresList(genresIdList).then(res=>setGenres(res)); 
+        });
     },[]);
+       
 
-
-    console.log(movie);
-    getGenresList();
+    console.log(movie)
     return (
         <div className={ scss.movieCard }>
             <div className={ scss.mainInfo}>
@@ -26,7 +31,11 @@ const MovieDetails=()=>{
                     <span className={ scss.category }>Overview</span>
                     <p className={ scss.overview }>{ movie.overview }</p>
                     <span className={ scss.category }>Genres</span>
-                    {/* <p>{ getGenresList(movie.genres) }</p> */}
+                    <p className={ scss.overview }>
+                        <ul className={ scss.genresList }>
+                        { genres.map((elem)=> <li>{ elem }</li> ) }
+                        </ul>
+                    </p>
                 </div> 
             </div>
                 <span>Additional information</span>
