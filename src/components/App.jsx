@@ -1,5 +1,7 @@
 import { Routes, Route, NavLink } from "react-router-dom";
 import TrendingTodayFilms from "./TrendingTodayFilms/TrendingTodayFilms";
+import Movies from "./Movies/Movies";
+// import { lazy } from 'react'
 import scss from './app.module.scss';
 import styled from 'styled-components'; 
 
@@ -24,6 +26,7 @@ export const App = () => {
       </nav>
       <Routes>
         <Route path="/" element={<TrendingTodayFilms/>} />
+        <Route path="/movies" element={<Movies/>} />
       </Routes>
     </div>
   );

@@ -1,0 +1,12 @@
+.filmlist {
+
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    list-style: disc;
+
+    &title{
+        font-size: 26px;
+        padding: 20px;
+    }
+}

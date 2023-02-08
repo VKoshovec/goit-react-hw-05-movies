@@ -1,8 +1,7 @@
 import { useState, useEffect } from "react";
 import { trendingMovies } from "components/moviesApi";
 import React from "react";
-import { Link } from "react-router-dom";
-import scss from './trendingTodayFilms.module.scss'
+import FilmList from "components/FilmList/FilmList";
 
 
 const TrendingTodayFilms = () => {
@@ -15,8 +14,8 @@ const TrendingTodayFilms = () => {
     }, []);
 
 
-    return (       
-        <div>{ films.map((element)=>{ return <Link to = {`${element.id}`} className={ scss.filmLink }>{element.title}</Link> }) }</div>
+    return (   
+        <FilmList title="Trending today" films={ films } />    
     );
 };
 
