@@ -1,0 +1,42 @@
+.movieCard{
+    display: block;
+    width: 100%;
+}
+
+.mainInfo {
+    display: flex;
+    min-width: 50vw;
+    flex-direction: row;
+}
+
+.leftInfo {
+    display: flex;
+    flex-direction: column;
+    width: 50vw;
+}
+
+.poster{
+    display: block;
+    width: 200px;
+    overflow: hidden;
+}
+
+.title{
+    font-size: 24px;
+    font-weight: 700;
+    padding-left: 20px;
+    margin-top: 10px;
+}
+
+.category{
+    font-size: 18px;
+    font-weight: 700;
+    padding-left: 20px;
+    margin-top: 10px;
+}
+
+.overview{
+    font-size: 14px;
+    padding-left: 20px;
+    margin-top: 10px;
+}

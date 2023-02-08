@@ -1,5 +1,7 @@
 import axios from "axios";
 
+const imgUrl = 'https://image.tmdb.org/t/p/w';
+const genresUrl = 'https://api.themoviedb.org/3/genre/movie/list';
 const apiKey = '0bf9a11da9d083f4751315d07dcbd89b';
 
 export async function trendingMovies () {
@@ -11,5 +13,19 @@ export async function getMoviesByName (filmName) {
 };
 
 export async function getMovieInfo (filmid) {
-   return await axios.get(`https://api.themoviedb.org/3/movie/${filmid}?api_key=${apiKey}&language=en-US`).then(result => result);
+   return await axios.get(`https://api.themoviedb.org/3/movie/${filmid}?api_key=${apiKey}&language=en-US`).then(result => result.data);
+};
+
+export function getImageUrl(imgName, imgSize) {
+   return `https://image.tmdb.org/t/p/w${imgSize}/${imgName}`
+};
+
+export async function getGenresList(genresIds) {
+   const request = await axios.get(`https://api.themoviedb.org/3/genre/movie/list?api_key=${apiKey}&language=en-US`)
+   .then(res=> res.data.genres);
+
+   return request.reduce ((acc, element) => {
+      if (genresIds.includes(element.id)){ acc.push(element.name) }     
+      return acc;
+   }, []); 
 };
