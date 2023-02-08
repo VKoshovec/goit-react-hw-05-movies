@@ -9,3 +9,7 @@ export async function trendingMovies () {
 export async function getMoviesByName (filmName) {
    return await axios.get(`https://api.themoviedb.org/3/search/movie?api_key=${apiKey}&language=en-US&query=${filmName}&page=1&include_adult=false`).then(result => result.data.results);
 };
+
+export async function getMovieInfo (filmid) {
+   return await axios.get(`https://api.themoviedb.org/3/movie/${filmid}?api_key=${apiKey}&language=en-US`).then(result => result);
+};
