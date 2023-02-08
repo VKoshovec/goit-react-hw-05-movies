@@ -1,5 +1,5 @@
-import { useState, lazy } from 'react';
-import scss from './movies.module.scss';
+import { useState } from 'react';
+import scss from './moviesPage.module.scss';
 import { getMoviesByName } from 'components/moviesApi';
 import FilmList from 'components/FilmList/FilmList';
 

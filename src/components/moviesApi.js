@@ -1,7 +1,5 @@
 import axios from "axios";
 
-const imgUrl = 'https://image.tmdb.org/t/p/w';
-const genresUrl = 'https://api.themoviedb.org/3/genre/movie/list';
 const apiKey = '0bf9a11da9d083f4751315d07dcbd89b';
 
 export async function trendingMovies () {
@@ -21,6 +19,7 @@ export function getImageUrl(imgName, imgSize) {
 };
 
 export async function getGenresList(genresIds) {
+   
    const request = await axios.get(`https://api.themoviedb.org/3/genre/movie/list?api_key=${apiKey}&language=en-US`)
    .then(res=> res.data.genres);
 

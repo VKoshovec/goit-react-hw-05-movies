@@ -17,7 +17,7 @@ const MovieDetails=()=>{
             const genresIdList =  res.genres.map((elem)=>{ return elem.id });
             getGenresList(genresIdList).then(res=>setGenres(res)); 
         });
-    },[]);
+    },[movieId]);
        
 
     console.log(movie)
