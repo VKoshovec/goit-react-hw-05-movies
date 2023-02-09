@@ -18,23 +18,20 @@ const MovieDetails=()=>{
         });
     },[movieId]);
        
-
-    console.log(movie)
     return (
         <div className={ scss.movieCard }>
             <div className={ scss.mainInfo}>
-                <img src={ getImageUrl( movie.poster_path, 200 ) } alt={ movie.title } className={ scss.poster }/>
+                <img src={ getImageUrl( movie.poster_path, 300 ) } alt={ movie.title } className={ scss.poster }/>
                 <div className={ scss.leftInfo}>
                     <span className={ scss.title }>{ movie.title }</span>
                     <span className={ scss.overview }>{`User score: ${movie.vote_average}`}</span>
                     <span className={ scss.category }>Overview</span>
                     <p className={ scss.overview }>{ movie.overview }</p>
                     <span className={ scss.category }>Genres</span>
-                    <p className={ scss.overview }>
+                    
                         <ul className={ scss.genresList }>
-                        { genres.map((elem)=> <li>{ elem }</li> ) }
+                        { genres.map((elem)=> <li key={ elem }>{ elem }</li> ) }
                         </ul>
-                    </p>
                 </div> 
             </div>
                 <p className={ scss.aditional }>Additional information</p>

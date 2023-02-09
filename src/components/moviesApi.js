@@ -15,7 +15,7 @@ export async function getMovieInfo (filmid) {
 };
 
 export function getImageUrl(imgName, imgSize) {
-   return `https://image.tmdb.org/t/p/w${imgSize}/${imgName}`
+   return `https://image.tmdb.org/t/p/w${imgSize}/${imgName}`;
 };
 
 export async function getGenresList(genresIds) {
@@ -28,3 +28,8 @@ export async function getGenresList(genresIds) {
       return acc;
    }, []); 
 };
+
+export async function getMovieCast (filmid) {
+   return await axios.get(`https://api.themoviedb.org/3/movie/${filmid}/credits?api_key=${apiKey}&language=en-US`).then(result => result.data);
+};
+
