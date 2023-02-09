@@ -6,11 +6,11 @@ import CastCard from "./CastCard/CastCard";
 
 const Cast =()=> {
 
-    const [cast, setCast] = useState([])
+    const [cast, setCast] = useState([]);
     const movieId = useParams().id;
 
     useEffect(()=>{
-        getMovieCast (movieId).then(res => setCast(res.cast.slice(0,5)));
+        getMovieCast (movieId).then(res => setCast(res.cast.slice(0,5))).catch(() => alert('Some problems with API'));
     },[movieId]);
     
     return (

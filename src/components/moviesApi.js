@@ -33,3 +33,6 @@ export async function getMovieCast (filmid) {
    return await axios.get(`https://api.themoviedb.org/3/movie/${filmid}/credits?api_key=${apiKey}&language=en-US`).then(result => result.data);
 };
 
+export async function getMovieReviews (filmid) {
+   return await axios.get(`https://api.themoviedb.org/3/movie/${filmid}/reviews?api_key=${apiKey}&language=en-US&page=1`).then(result => result.data);
+};

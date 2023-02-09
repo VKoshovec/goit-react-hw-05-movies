@@ -9,8 +9,7 @@ const TrendingTodayFilms = () => {
     const[films, setFilms] = useState([]);
 
     useEffect (()=>{
-        trendingMovies().then(res=> setFilms(res));
-        return ( setFilms([]))
+        trendingMovies().then(res=> setFilms(res)).catch(() => alert('Some problems with API'));
     }, []);
 
 
