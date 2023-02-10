@@ -1,0 +1,16 @@
+.revList {
+    list-style: none;
+    padding: 0px;
+
+    & li{
+        padding: 10px;
+
+        &:not(:last-child) {
+            border-bottom: 1px black solid;
+        }
+    }
+}
+
+.revAuth{
+    font-weight: 700;
+}

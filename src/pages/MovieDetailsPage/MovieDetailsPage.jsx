@@ -1,32 +1,33 @@
-import scss from './movieDetails.module.scss';
+import scss from './movieDetailsPage.module.scss';
 import { getMovieInfo, getImageUrl, getGenresList } from 'components/moviesApi';
 import { Outlet, useParams, Link, useLocation } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 
-const MovieDetails=()=>{
+const MovieDetails = () => {
 
     const location = useLocation();
-    const backLink = location.state?.from ?? "/movies";
-
-    console.log(location);
-    console.log(backLink);
-
     const movieId = useParams().id;
     const [ movie, setMovie ] = useState([]);
     const [ genres, setGenres ] = useState([]);
     const [ img, setImg] = useState('');  
-      
+    const [ defaultBackLink, setdefaultBackLink] = useState('');
+
+    useEffect(()=>{
+        location.state && setdefaultBackLink(location.state.from);
+    },[location.state]);  
 
     useEffect (()=>{
         getMovieInfo(movieId).then(res => { 
             setMovie(res);
-            setImg(getImageUrl(res.poster_path, 300));
+            setImg(res.poster_path? 
+                   getImageUrl(res.poster_path, 300):"https://dummyimage.com/640x480/2a2a2a/ffffff&text=Product+image+placeholder");
             const genresIdList =  res.genres.map((elem)=>{ return elem.id });
             getGenresList(genresIdList).then(res=>setGenres(res)).catch(() => alert('Some problems with API'));      
         }).catch(() => alert('Some problems with API'));
-
     },[movieId]);
        
+    const backLink = location.state?.from ?? defaultBackLink;
+
     return (
         <>
         <Link to={ backLink } className={ scss.movieBackButton }>{`<-`} Go Back</Link>
@@ -46,7 +47,7 @@ const MovieDetails=()=>{
                 </div> 
             </div>
                 <p className={ scss.aditional }>Additional information</p>
-                <ul >
+                <ul className={ scss.aditionalul }>
                    <li><Link to={`/movies/${movieId}/cast`}>Cast</Link></li>
                    <li><Link to={`/movies/${movieId}/reviews`} >Reviews</Link></li>
                 </ul>

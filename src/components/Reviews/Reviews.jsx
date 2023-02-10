@@ -2,10 +2,11 @@ import { getMovieReviews } from "components/moviesApi";
 import { useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { nanoid } from "nanoid";
+import scss from './reviews.module.scss'
 
-const Reviews =()=> {
+const Reviews = () => {
 
-    const [reviews, setReviews] = useState([])
+    const [reviews, setReviews] = useState([]);
     const movieId = useParams().id;
 
     useEffect(()=>{
@@ -13,10 +14,10 @@ const Reviews =()=> {
     },[movieId]);
 
     return (
-        <ul>
+        <ul className={ scss.revList }>
             { reviews.length > 0 ? 
               reviews.map((element)=>{ return <li key={ nanoid() }>
-              <p>{`Autor: ${ element.author }`}</p>
+              <p className={ scss.revAuth }>{`Autor: ${ element.author }`}</p>
               <p>{ element.content }</p>
               </li>}) :
               <li>There are no reviews.</li>

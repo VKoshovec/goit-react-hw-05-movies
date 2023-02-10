@@ -5,7 +5,7 @@ import FilmList from 'components/FilmList/FilmList';
 import { useSearchParams } from "react-router-dom";
 
 
-const MoviesPage =()=>{
+const MoviesPage = () => {
 
     const [fdFilms, setFdFilm ] = useState([]);
     const [searchParams, setSearchParams] = useSearchParams();

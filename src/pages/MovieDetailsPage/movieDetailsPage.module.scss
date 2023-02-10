@@ -59,14 +59,15 @@
     padding-left: 20px;
 }
 
-.linkInfo {
-    outline: 1px solid black;
-}
-
 .aditional{
     font-size: 18px;
     font-weight: 700;
     padding-left: 20px;
+    
+    &ul {
+        border-bottom: 1px black solid;
+        padding-bottom: 20px;
+    }
 }
 
 .movieBackButton {
@@ -77,4 +78,5 @@
     padding: 5px;
     text-decoration: none;
     outline: 1px solid black;
+    color: black;
 }

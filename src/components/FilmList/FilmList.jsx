@@ -10,9 +10,11 @@ const FilmList =({ title , films })=> {
         <>
            { title && <h2 className={ scss.filmlisttitle }>{ title }</h2> }
             <ul className={ scss.filmlist }>
-               { films.map((element)=>{ return <li key={ element.id }>
+               { films.map((element)=>{ 
+                return <li key={ element.id }>
                 <Link to = {`/movies/${element.id}`} state={{ from: location } }>{element.title}</Link>
-                </li> }) }
+                </li> 
+                }) }
             </ul>
         </>
     );
@@ -20,6 +22,12 @@ const FilmList =({ title , films })=> {
 
 FilmList.propTypes = {
     title: PropTypes.string,
+    film: PropTypes.arrayOf(
+        PropTypes.shape({ 
+            id: PropTypes.number.isRequired,
+            title: PropTypes.string.isRequired 
+        })
+    )
 }
 
 export default FilmList;
