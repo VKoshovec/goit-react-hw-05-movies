@@ -1,8 +1,10 @@
 import { getMovieCast, getImageUrl } from "components/moviesApi";
 import { useParams } from "react-router-dom";
-import { useEffect, useState } from "react";
+import { useEffect, useState, lazy, Suspense } from "react";
 import scss from './cast.module.scss'
-import CastCard from "./CastCard/CastCard";
+import Loader from "components/Loader/Loader";
+
+const LazyCastCard = lazy(()=> import ("./CastCard/CastCard") );
 
 const Cast = () => {
 
@@ -15,9 +17,10 @@ const Cast = () => {
     
     return (
         <ul className={ scss.list }>
+          <Suspense fallback = { <Loader/> }>
             { cast.length > 0 ?
-              cast.map((element)=>{ return <li key={ element.id }>
-                <CastCard 
+              cast.map((element)=>{ return <li key={ element.id }>               
+                <LazyCastCard 
                     castImg = { element.profile_path ? 
                         getImageUrl(element.profile_path, 300) : 
                         'https://dummyimage.com/640x480/2a2a2a/ffffff&text=Product+image+placeholder' }
@@ -25,7 +28,8 @@ const Cast = () => {
                     castCharacter = { element.character}
                 />
             </li>}) : 
-            <li>There are no cast info.</li> }            
+            <li>There are no cast info.</li> }    
+           </Suspense>         
         </ul>
     )
 };

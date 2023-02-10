@@ -1,8 +1,8 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, lazy, Suspense } from "react";
 import { trendingMovies } from "components/moviesApi";
-import React from "react";
-import FilmList from "components/FilmList/FilmList";
+import Loader from "components/Loader/Loader";
 
+const ListOfFilms = lazy(() => import("components/FilmList/FilmList"))
 
 const TrendingTodayFilms = () => {
 
@@ -13,8 +13,10 @@ const TrendingTodayFilms = () => {
     }, []);
 
 
-    return (   
-        <FilmList title="Trending today" films={ films } />    
+    return (
+        <Suspense fallback={ <Loader/> }>   
+           <ListOfFilms title="Trending today" films={ films } />    
+        </Suspense>
     );
 };
 

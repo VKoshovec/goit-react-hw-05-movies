@@ -1,9 +1,10 @@
-import { useState, useEffect } from 'react';
-import scss from './moviesPage.module.scss';
+import { useState, useEffect, lazy, Suspense } from 'react';
 import { getMoviesByName } from 'components/moviesApi';
-import FilmList from 'components/FilmList/FilmList';
 import { useSearchParams } from "react-router-dom";
+import scss from './moviesPage.module.scss';
+import Loader from "components/Loader/Loader";
 
+const ListOfFilms = lazy(() => import("components/FilmList/FilmList"));
 
 const MoviesPage = () => {
 
@@ -28,7 +29,9 @@ const MoviesPage = () => {
             <input type="text" name="searchWord" defaultValue={ queryFilm }/>
             <button type="submit">Search</button>
         </form>
-            <FilmList films={ fdFilms }/>
+         <Suspense fallback={ <Loader/> }>
+             <ListOfFilms films={ fdFilms }/>
+         </Suspense>
         </>
     );
 }
