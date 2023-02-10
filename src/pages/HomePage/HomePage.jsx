@@ -2,7 +2,7 @@ import { useState, useEffect, lazy, Suspense } from "react";
 import { trendingMovies } from "components/moviesApi";
 import Loader from "components/Loader/Loader";
 
-const ListOfFilms = lazy(() => import("components/FilmList/FilmList"))
+const LazyFilmList = lazy(() => import("components/FilmList/FilmList"))
 
 const TrendingTodayFilms = () => {
 
@@ -15,7 +15,7 @@ const TrendingTodayFilms = () => {
 
     return (
         <Suspense fallback={ <Loader/> }>   
-           <ListOfFilms title="Trending today" films={ films } />    
+           <LazyFilmList title="Trending today" films={ films } />    
         </Suspense>
     );
 };

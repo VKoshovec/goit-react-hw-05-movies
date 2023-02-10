@@ -4,7 +4,7 @@ import { useSearchParams } from "react-router-dom";
 import scss from './moviesPage.module.scss';
 import Loader from "components/Loader/Loader";
 
-const ListOfFilms = lazy(() => import("components/FilmList/FilmList"));
+const LazyFilmList = lazy(() => import("components/FilmList/FilmList"));
 
 const MoviesPage = () => {
 
@@ -30,7 +30,7 @@ const MoviesPage = () => {
             <button type="submit">Search</button>
         </form>
          <Suspense fallback={ <Loader/> }>
-             <ListOfFilms films={ fdFilms }/>
+             <LazyFilmList films={ fdFilms }/>
          </Suspense>
         </>
     );
