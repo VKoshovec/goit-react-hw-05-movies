@@ -18,7 +18,7 @@ export const App = () => {
       <Navigation/>
         <Suspense fallback={ <Loader/> }>
           <Routes>
-            <Route path={ "/" } element={<LazyHomePage/>} />
+            <Route path="/" element={<LazyHomePage/>} />
             <Route path="/movies" element={<LazyMoviesPage/>} />
             <Route path="/movies/:id" element={<LazyMovieDetailsPage/>}>
               <Route path='cast' element={<LazyCast/>}/>
